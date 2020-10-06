@@ -10,8 +10,9 @@ outputs:
     value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
   using: composite
-  steps: 
-    - run: echo "Hello $INPUT_WHO-TO-GREET"
+  steps:
+    - run: env
+    - run: echo "Hello $INPUT_WHOTOGREET"
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
