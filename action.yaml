@@ -4,19 +4,18 @@ description: Greet someone
 inputs:
   who-to-greet:  # id of input
     description: Who to greet
+    required: true
 outputs:
   random-number: 
     description: Random number
-    #value: ${{ steps.random-number-generator.outputs.random-id }}
-    value: ${{ env.RANDOM }}
+    value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
   using: composite
   steps: 
     - run: echo "Hello $WHO_TO_GREET"
       shell: bash
     - id: random-number-generator
-      run: echo "RANDOM=$RANDOM" >>"$GITHUB_ENV"
-      #run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
