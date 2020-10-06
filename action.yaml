@@ -1,9 +1,9 @@
 name: Hello World
+author: Daniel Weibel
 description: Greet someone
 inputs:
   who-to-greet:  # id of input
     description: Who to greet
-    required: true
 outputs:
   random-number: 
     description: Random number
