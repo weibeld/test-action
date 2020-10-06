@@ -12,7 +12,7 @@ outputs:
 runs:
   using: composite
   steps: 
-    - run: echo "Hello $WHO_TO_GREET"
+    - run: echo "Hello $INPUT_WHO_TO_GREET"
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
