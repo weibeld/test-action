@@ -7,14 +7,16 @@ inputs:
 outputs:
   random-number: 
     description: Random number
-    value: ${{ steps.random-number-generator.outputs.random-id }}
+    #value: ${{ steps.random-number-generator.outputs.random-id }}
+    value: ${{ env.RANDOM }}
 runs:
   using: composite
   steps: 
     - run: echo "Hello $WHO_TO_GREET"
       shell: bash
     - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
+      run: echo "RANDOM=$RANDOM" >>"$GITHUB_ENV"
+      #run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
     - run: ${{ github.action_path }}/goodbye.sh
       shell: bash
